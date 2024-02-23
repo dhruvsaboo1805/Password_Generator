@@ -97,28 +97,23 @@ function calStrength(){
 }
 
 async function copyContent(){
-    try{
+    
         await navigator.clipboard.writeText(passwordDisplay.value);
         copyMsg.innerText = "copied";
         copyMsg.style.color = "white";
-        copyMsg.style.fontWeight = "500";
-    }
-    catch(e){
-        copyMsg.innerText = "Failed";
-    }
+    
+        // to make copy wala span visible
+        console.log("message has started printing for active");
+        copyMsg.classList.add("active");
+        console.log("message has ended printing for active");
 
-    // to make copy wala span visible
-    console.log("message has started printing for active");
-    copyMsg.classList.add("active");
-    console.log("message has ended printing for active");
+        setTimeout(() => {
+            copyMsg.classList.remove("active");
+            console.log("message has ended printing after active");
 
-    setTimeout(() => {
-        copyMsg.classList.remove("active");
-        console.log("message has ended printing after active");
+        }, 1000);
 
-    }, 2000);
-
-    console.log("sab khatam");
+        console.log("sab khatam");
 
 
 }
